@@ -1,5 +1,5 @@
 import { useSelector,useDispatch } from "react-redux";
-import { incNumber,decNumber } from "./Actions";
+import { incNumber,decNumbe } from "./Actions";
 
 
 function Reduxapp() {
@@ -9,7 +9,7 @@ function Reduxapp() {
     return(<>
     <h1>Sawvik Kar Dipto</h1>
     <h3>using React & Redux</h3>
-    <button onClick={()=>dispatch(decNumber())}>-</button>
+    <button onClick={()=>dispatch(decNumbe())}>-</button>
     <input type="text" value={mystate}/>
     <button onClick={()=>dispatch(incNumber())}>+</button>
     </>);
