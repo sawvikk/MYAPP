@@ -11,13 +11,14 @@ import reportWebVitals from './reportWebVitals';
 // }
 // import store from './redux/Store';
 // import { Provider } from 'react-redux';
-import Hook from './Components/hook';
+import { Provider } from 'react-redux';
+import Store from './anisul_redux/Store';
+
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Provider store ={store}>
-      <App/>
-    </Provider>  */}
-    <Hook/>
+  <Provider store={Store}>
+    <App/>
+  </Provider>
   </React.StrictMode>,
   document.getElementById('root'));
 

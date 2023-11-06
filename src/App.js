@@ -1,4 +1,4 @@
-// // import logo from './logo.svg';
+// import logo from './logo.svg';
 // import './App.css';
 // /* import Form from './anisul_API/useRef/form';
 // import Time from './anisul_API/useRef/Time';
@@ -6,6 +6,8 @@
 // */
 // import About from './Components/about';
 // import Fun from './anisul_API/fun';
+
+import Counter from "./anisul_redux/Counter";
 
 // function App(){
 //   return (
@@ -68,12 +70,12 @@
 
 // // export default App;
 
-import Reduxapp from "./redux/Reduxapp";
+// import Reduxapp from "./redux/Reduxapp";
 
 function App(){
   return(
     <div className="App">
-      <Reduxapp/>
+      <Counter/>
     </div>
   )
 }
