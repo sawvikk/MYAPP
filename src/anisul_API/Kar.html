@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="op">Output</h1>
+    <input id="ip1" type="text"/>
+    <button id="btn1" onClick="fone" >Button</button>
+    <button id="btn2" onClick="ftwo" >Button2</button>
+    
+    <script>
+        function f(a){
+            console.log(a);
+        }
+
+        gift=0;
+
+        const promise = new Promise((valo,mondo)=>{
+            if(gift){valo("Ei je tor gift. "); }
+            else{ mondo("Sorry, Dosto, Gift nai . "); }
+        });
+
+        promise
+        .then((a)=>console.log(a))
+        .catch((a)=>console.log(a+"Jaki"));
+
+
+
+
+
+        // const ps=true;
+        // const mark = 70;
+        // function er(callback){
+        //     f("Enrollment");
+        //     setTimeout(() => {
+        //         if(ps) {
+        //             callback();
+        //         }
+        //         else f("Payment Failed");
+        //     }, 2000);
+        // }
+
+        // function pro(callback){
+        //     f("Progress");
+        //     setTimeout(() => {
+        //         if(mark>=80) callback();
+        //         else f(mark); 
+        //     }, 2000);
+        //     // settimeout(()=>{
+        //     //     if(mark<80) callback();
+        //     //     else{ f("Failed in progress");}
+        //     // },2000);
+        // }
+
+        // function getCertificate(){
+        //     f("Certificate is complete. ");
+        //     setTimeout(() => {
+        //         f("Sawvik");
+        //     }, 2000);
+        // }
+
+        // // getCertificate();
+        // er(function(){
+        //     pro(getCertificate);
+        // }); 
+        // // pro(getCertificate);
+   </script>
+</body>
+</html>

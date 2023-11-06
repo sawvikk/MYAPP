@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Data Display</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <label for="apiUrlInput">API URL:</label>
+            <input type="text" id="apiUrlInput" value="https://jsonplaceholder.typicode.com/posts">
+            <button id="fetchDataButton">Fetch Data</button>
+        </div>
+        <div id="pagination">
+            <button id="prevPageButton" disabled>Previous Page</button>
+            <span id="currentPage">Page 1</span>
+            <button id="nextPageButton" disabled>Next Page</button>
+        </div>
+        <div id="output"></div>
+    </div>
+    <script>
+const apiUrlInput = document.getElementById('apiUrlInput');
+const fetchDataButton = document.getElementById('fetchDataButton');
+const prevPageButton = document.getElementById('prevPageButton');
+const nextPageButton = document.getElementById('nextPageButton');
+const currentPageSpan = document.getElementById('currentPage');
+const outputElement = document.getElementById('output');
+
+let currentPage = 1;
+const itemsPerPage = 10; // Number of items to display per page
+
+async function fetchData() {
+  try {
+    const apiUrl = apiUrlInput.value;
+
+    // Display loading message
+    outputElement.textContent = 'Fetching data...';
+
+    // Fetch data from the API using async/await
+    const response = await fetch(`${apiUrl}?_page=${currentPage}&_limit=${itemsPerPage}`);
+    const totalCountResponse = await fetch(`${apiUrl}?_page=${currentPage}&_limit=${itemsPerPage}`);
+
+    if (!response.ok) {
+      throw new Error(`Network response was not ok, status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    const totalCount = totalCountResponse.headers.get('X-Total-Count');
+
+    outputElement.textContent = '';
+
+    const dataDisplay = document.createElement('pre');
+    dataDisplay.textContent = JSON.stringify(data, null, 2);
+    outputElement.appendChild(dataDisplay);
+    const totalPages = Math.ceil(totalCount / itemsPerPage);
+    currentPageSpan.textContent = `Page ${currentPage} of ${totalPages}`;
+
+    prevPageButton.disabled = currentPage === 1;
+    nextPageButton.disabled = currentPage === totalPages;
+  } catch (error) {
+    outputElement.textContent = `An error occurred: ${error.message}`;
+  }
+}
+
+// Pagination event listeners
+prevPageButton.addEventListener('click', () => {
+  if (currentPage > 1) {
+    currentPage--;
+    fetchData();
+  }
+});
+
+nextPageButton.addEventListener('click', () => {
+  currentPage++;
+  fetchData();
+});
+
+// Initial fetch when the page loads
+fetchData();
+
+
+    </script>
+</body>
+</html>
